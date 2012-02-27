@@ -9,6 +9,7 @@ function runThisStatement(id) {
     var scriptEval;
     try {
         // this will take care of global eval!
+        //http://perfectionkills.com/global-eval-what-are-the-options/
         //scriptEval = this.eval(script);
         scriptEval = eval.call(this, script);
     }
