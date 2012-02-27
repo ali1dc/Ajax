@@ -5,14 +5,23 @@ function runThisStatement(id) {
     var outputDiv = document.getElementById("fire-bug-output");
     var script = document.getElementById(id).value;
     if (script == "") return;
-    var scriptEval = eval(script);
+
+    var scriptEval;
+    try {
+        // this will take care of global eval!
+        //scriptEval = this.eval(script);
+        scriptEval = eval.call(this, script);
+    }
+    catch (err) {
+        scriptEval = "<span class='error'>" + err.message + "</span>";
+    }
     if (typeof scriptEval == "undefined") {
         outputDiv.innerHTML += "<div class='input-command'><span> >>> " + script + "</span></div>";
-        return;
     }
-    outputDiv.innerHTML += "<div class='input-command'><span> >>> " + script + "</span></div>";
-    outputDiv.innerHTML += "<div class='new-line'>" + scriptEval + "</div>";
-
+    else {
+        outputDiv.innerHTML += "<div class='input-command'><span> >>> " + script + "</span></div>";
+        outputDiv.innerHTML += "<div class='new-line'>" + scriptEval + "</div>";
+    }
     // for scrolling
     outputDiv.scrollTop = outputDiv.scrollHeight;
 }
