@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Rich Internet Application with Ajax - Assignments</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" type="text/css" href="main.css" media="screen" />
+    <link href="fb.css" rel="stylesheet" type="text/css" />
+    <script src="fb.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        // Displays an email tag based on the given parameters
+        function getHidden(end, middle, start, subject, titleBeforeEmail, titleAfterEmail) {
+            // Assemble various parts of the email
+            var one = 'mai';
+            var two = 'lto:';
+            var three = '?Subject=';
+            var emailAddress = getPutTogetherEmail(end, middle, start);
+            var title = titleBeforeEmail + emailAddress + titleAfterEmail;
+            var titleAttribute = "title='" + title + "'";
+            var altAttribute = "alt='" + title + "'";
+            var emailTag = "<a href='" + one + two + emailAddress + three + subject + "' " + titleAttribute + " " + altAttribute + ">" + emailAddress + "</a>";
+
+            // Write out the email tag to the screen
+            document.write(emailTag);
+        }
+
+        // Returns a string that is a legible representation of the 3 provided strings of a broken up email
+        function getPutTogetherEmail(end, middle, start) {
+            // start, middle, end
+            var putTogether = start + middle + end;
+
+            // Return email in its legible form
+            return (putTogether);
+        }    
+    </script>
+    <style type="text/css">
+        .style1 {font-size: small}
+    </style>
+</head>
+<body>
+<table id="mainTable" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr bgcolor="#71828A">
+    <td height="36" colspan="3" valign="bottom" id="pageTitle">
+    <h1 style="padding-bottom: 5px;">Johns Hopkins University - 605.787 - Rich Internet Applicaitons with Ajax</h1>	</td>
+  </tr>
+  <tr>
+    <td width="116" align="left" valign="top"><!--DWLayoutEmptyCell-->&nbsp;</td>
+    <td width="808" align="left" valign="top"><!--DWLayoutEmptyCell-->&nbsp;</td>
+    <td width="50" align="right" valign="top"><!--DWLayoutEmptyCell-->&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+	 <span id="breadCrumb"><a href="index.html">Home</a> / <a href="./">Ajax Course</a> / Assignments </span></td>
+  </tr>
+  <tr align="left">
+    <td colspan="3" valign="bottom">
+	 <div id="pageName"> 
+      <h2 style="padding: 5px 10px 0px 0px;">Rich Internet Application with Ajax</h2>
+    </div>	</td>
+  </tr>
+  <tr>
+    <td height="309" valign="top" class="navLinks">
+	<div class="navLinkCell"><a href="overview.html">Syllabus &amp; Books</a></div>
+	<div class="navLinkCell"><a href="assignments.html">Assignments</a></div>
+	<div class="navLinkCell"><a href="slides.html">Lecture Slides</a></div></td>
+    <td colspan="2" valign="top" id="mainContent">
+	  <h1><strong><br>
+      Assignments</strong></h1>	  
+	  <p><a href="assignments/HW-00.pdf" target="_blank">Assignment 0 (Home dev environment setup)</a><br>
+	     <a href="assignments/HW-01.pdf" target="_blank">Assignment 1</a><br>
+	     <a href="assignments/HW-Ajax-Baisics-1.pdf" target="_blank">Assignment 2</a> (<a href="code/Customer.zip" target="_blank">Customer.zip</a>)<br>
+	     <a href="assignments/HW-Ajax-Basics-2.pdf" target="_blank">Assignment 3</a><br>
+	     <a href="assignments/HW-MiniFirebug.pdf" target="_blank">Assignment 4</a><br>
+	     <div style="display: none;"><a href="assignments/HW-05.pdf" target="_blank">Assignment 5</a><br>
+	     <a href="assignments/HW-06.pdf" target="_blank">Assignment 6</a><br>
+	     <a href="assignments/HW-07.pdf" target="_blank">Assignment 7</a><br>
+	     <a href="assignments/HW-09.pdf" target="_blank">Assignment 8</a><br>
+	     <a href="assignments/HW-10.pdf" target="_blank">Assignment 9</a> ( <a href="code/Customer.zip" target="_blank">Customer.zip</a>)<br>
+	     <a href="assignments/HW-11.pdf" target="_blank">Assignment 10</a><br>
+	     <a href="assignments/HW-GWT-RPC.pdf" target="_blank">Optional Assignment (Due 12/12/2010 at 11:59:59pm) </a><br>
+	     <a href="assignments/HW-12.pdf" target="_blank">Assignment 12</a><br>
+	     <a href="assignments/HW-13.pdf" target="_blank">Assignment 13</a></div>
+	  </p>
+    </td>
+  </tr>
+  <tr>
+    <td id="copyright" height="19" colspan="3" valign="top"><div align="center">
+      <table cellspacing="0" cellpadding="0">
+        <tr>
+          <td align="left" valign="top"></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center"><span class="style1">&copy; Copyright Yaakov Chaikin 2009 </span></td>
+        </tr>
+      </table>
+    </div></td>
+  </tr>
+</table>
+<div id="fire-bug">
+    <input type="button" id="toggle-my-firebug" value="mini fire bug" onclick="toggle()" />
+    <div id="fire-bug-console">
+        <textarea id="input-text-area" rows="4"></textarea> <br />
+        <input type="button" value="Run" onclick="runThisStatement('input-text-area')" /> <input type="button" value="Clear" onclick="clearMiniFireBug()" />
+        <div id="fire-bug-output">
+        </div>
+    </div>
+</div>
+</body>
+</html>

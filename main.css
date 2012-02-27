@@ -1,0 +1,139 @@
+﻿body
+{
+	font-family: Arial,sans-serif;
+	color: #333333;
+	line-height: 1.166;	
+	margin: 0px;
+	padding: 0px;
+	background: url("../images/bg_grad.jpg") fixed;
+}
+
+#pageName
+{
+	padding: 0px 0px 14px 10px;
+	margin: 0px;
+	border-bottom:1px solid #ccd2d2;
+}
+
+#pageName h2
+{
+	font: bold 175% Arial,sans-serif;
+	color: #000000;
+	margin:0px;
+	padding: 0px;
+}
+
+#mainTable
+{
+	background-color: #FFFFFF;
+	margin: 20px 20px 0px 20px;
+}
+
+#mainContent
+{
+	padding: 0px 0px 0px 10px;
+	border-left: 1px solid #cccccc;
+	padding-right: 10px;
+}
+
+#copyright
+{
+	border-top: 1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+}
+
+#pageTitle
+{
+	color: #ffffff;
+	font-weight: normal;
+}
+
+h1
+{
+	font: bold 120% Arial,sans-serif;
+}
+
+h2
+{
+	font: bold 114% Arial,sans-serif;
+}
+
+h3
+{
+	font: bold 100% Arial,sans-serif;
+}
+
+h4
+{
+	font: 100% Arial,sans-serif;
+}
+
+h5
+{
+	font: 100% Arial,sans-serif;
+}
+
+h1, h2, h3, h4, h5
+{
+		margin: 0px;
+		padding: 0px;
+}
+
+/************* breadCrumb styles ***************/
+
+#breadCrumb
+{
+	padding: 0px 0px 10px 10px;
+	font: small Verdana,sans-serif;
+	color: #AAAAAA;
+}
+
+#breadCrumb a:link, a:visited
+{
+	color: #AAAAAA;
+}
+
+#breadCrumb a:hover
+{
+	color: #005FA9;
+	text-decoration: underline;
+}
+
+.navLinks
+{
+	border-top: 1px solid #ffffff;
+	border-bottom: 1px solid #cccccc;
+	background-image: url("../images/bg_nav.jpg");
+	padding: 10px 0px 5px 3px;
+	
+}
+
+.navLinks a:link, a:visited
+{
+	color: #21536A;
+	font-weight: bold;
+}
+
+.navLinks a:hover
+{
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.email a:link, .email a:visited
+{
+	 text-decoration: underline;
+	 color: #333333;
+}
+
+.email a:hover{
+	text-decoration: none;
+	color: #333333;
+}
+
+.navLinkCell
+{
+	display: block;
+	padding: 6px;
+	border-bottom: 1px solid #cccccc;
+}
