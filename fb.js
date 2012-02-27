@@ -46,4 +46,24 @@ function toggle() {
         document.getElementById("fire-bug-output").innerHTML = "";
         document.getElementById("input-text-area").value = "";
     }
-} 
+}
+
+// dynamically add mini firebug to the page
+function miniFirebugStartup() {
+    var html = "<div id='fire-bug'>" +
+                    "<input type='button' id='toggle-my-firebug' value='mini fire bug' onclick='toggle()' />" +
+                    "<div id='fire-bug-console'>" +
+                        "<textarea id='input-text-area' rows='4'></textarea> <br />" +
+                        "<input type='button' value='Run' onclick=\"runThisStatement('input-text-area')\"' />" + 
+                        "<input type='button' value='Clear' onclick='clearMiniFireBug()' />" +
+                        "<div id='fire-bug-output'>" +
+                        "</div>" +
+                    "</div>" +
+                "</div>";
+    var firebugDiv = document.createElement('div');
+    firebugDiv.id = "fire-bug-wrapper";
+    document.body.appendChild(firebugDiv);
+    document.getElementById("fire-bug-wrapper").innerHTML = html;
+}
+
+window.onload = function () { miniFirebugStartup(); };
