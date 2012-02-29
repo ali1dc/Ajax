@@ -1,9 +1,11 @@
 ﻿/* Namespace for avoiding name conflicts*/
-var MiniFireBugConsole = {};
+var MFBConsole = {};
 
-MiniFireBugConsole.logs = new Array();
+/* Array for saving logs */
+MFBConsole.logs = new Array();
 
-MiniFireBugConsole.executeScript = function () {
+/* execute the input command and print it out */
+MFBConsole.executeScript = function () {
     var outputDiv = document.getElementById("fire-bug-output");
     var script = document.getElementById("input-text-area").value;
     if (script == "") return;
@@ -12,71 +14,72 @@ MiniFireBugConsole.executeScript = function () {
     try {
         // this will take care of global eval!
         //http://perfectionkills.com/global-eval-what-are-the-options/
-        //scriptEval = this.eval(script);
         scriptEval = eval.call(this, script);
     }
     catch (err) {
         scriptEval = "<span class='error'>error>>> " + err.message + "</span>";
     }
     if (typeof scriptEval != "undefined") {
-        //outputDiv.innerHTML += "<div class='input-command'><span> >>> " + script + "</span></div>";
         outputDiv.innerHTML += "<div class='new-line'>" + scriptEval + "</div>";
     }
     // for scrolling down to new output
     outputDiv.scrollTop = outputDiv.scrollHeight;
 }
 
-MiniFireBugConsole.log = function (input) {
+/* logging function */
+MFBConsole.log = function (input) {
     if (document.getElementById("fire-bug-console").style.display == "none") {
-        MiniFireBugConsole.logs.push(input);
+        MFBConsole.logs.push(input);
     } else {
-        document.getElementById("fire-bug-output").innerHTML += "<div class='mini-firebug-log'><span>log>>> " + input + "</span></div>";
+        var outputDiv = document.getElementById("fire-bug-output");
+        outputDiv.innerHTML += "<div class='mini-firebug-log'><span>log>>> " + input + "</span></div>";
+        outputDiv.scrollTop = outputDiv.scrollHeight;
     }
 }
 
-MiniFireBugConsole.printExistingLogs = function () {
+MFBConsole.printExistingLogs = function () {
     var outputDiv = document.getElementById("fire-bug-output");
     if (outputDiv != null) {
-        for (var i in MiniFireBugConsole.logs) {
-            outputDiv.innerHTML += "<div class='mini-firebug-log'><span>log>>> " + MiniFireBugConsole.logs[i] + "</span></div>";
+        for (var i in MFBConsole.logs) {
+            outputDiv.innerHTML += "<div class='mini-firebug-log'><span>log>>> " + MFBConsole.logs[i] + "</span></div>";
         }
+        outputDiv.scrollTop = outputDiv.scrollHeight;
     }
 }
 
-// clear input command area
-MiniFireBugConsole.clearMiniFireBug = function() {
+/* clear input command area */
+MFBConsole.clearMiniFireBug = function() {
     document.getElementById("input-text-area").value = "";
 }
 
-//http://www.randomsnippets.com/2008/02/12/how-to-hide-and-show-your-div/
-//for show and hide mini fire bug
-MiniFireBugConsole.toggle = function () {
-    var ele = document.getElementById("fire-bug-console");
-    var text = document.getElementById("toggle-my-firebug");
-    if (ele.style.display == "block") {
-        ele.style.display = "none";
-        text.value = "mini fire bug";
-        // clear current history and logs // same as Firebug!
+/* for show and hide mini fire bug */
+MFBConsole.toggle = function () {
+    var fbc = document.getElementById("fire-bug-console");
+    var fbcButton = document.getElementById("toggle-my-firebug");
+    if (fbc.style.display == "block") {
+        fbcButton.value = "mini fire bug";
+        fbc.style.display = "none";
+        // clear current history and logs - same as Firebug!
         document.getElementById("fire-bug-output").innerHTML = "";
         document.getElementById("input-text-area").value = "";
-        MiniFireBugConsole.logs = new Array();
+        MFBConsole.logs = new Array();
     }
     else {
-        ele.style.display = "block";
-        text.value = "Close";
+        fbcButton.value = "Close";
+        fbc.style.display = "block";
         // print existing logs
-        MiniFireBugConsole.printExistingLogs()
+        MFBConsole.printExistingLogs()
     }
 }
 
-// dynamically add mini firebug to the page
-MiniFireBugConsole.miniFirebugStartup = function() {
+/* dynamically add mini firebug to the page */
+MFBConsole.miniFirebugStartup = function() {
     var html = "<div id='fire-bug'>" +
-                    "<input type='button' id='toggle-my-firebug' value='mini fire bug' onclick='MiniFireBugConsole.toggle()' />" +
+                    "<input type='button' id='toggle-my-firebug' value='mini fire bug' onclick='MFBConsole.toggle()' />" +
                     "<div id='fire-bug-console'>" +
                         "<textarea id='input-text-area' rows='4'></textarea> <br />" +
-                        "<input type='button' value='Run' onclick=\"MiniFireBugConsole.executeScript()\"' />" +
-                        "<input type='button' value='Clear' onclick='MiniFireBugConsole.clearMiniFireBug()' />" +
+                        "<input type='button' value='Run' onclick=\"MFBConsole.executeScript()\"' />" +
+                        "<input type='button' value='Clear' onclick='MFBConsole.clearMiniFireBug()' />" +
                         "<div id='fire-bug-output'>" +
                         "</div>" +
                     "</div>" +
@@ -87,21 +90,19 @@ MiniFireBugConsole.miniFirebugStartup = function() {
     document.getElementById("fire-bug-wrapper").innerHTML = html;
 }
 
-//window.onload = function () { alert("salam ali agha!"); };
-
-// to handle the onload event existence
-MiniFireBugConsole.onLoadHandler = function () {
+/* to handle the onload event existence */
+MFBConsole.onLoadHandler = function () {
     if (!window.onload) {
         window.onload = function () {
-            MiniFireBugConsole.miniFirebugStartup();
+            MFBConsole.miniFirebugStartup();
         };
     } else {
         var oldWindowLoadFunction = window.onload;
         window.onload = function () {
             oldWindowLoadFunction();
-            MiniFireBugConsole.miniFirebugStartup();
+            MFBConsole.miniFirebugStartup();
         };
     }
 }
 
-MiniFireBugConsole.onLoadHandler();
+MFBConsole.onLoadHandler();

@@ -1,0 +1,52 @@
+﻿* { 
+	font-family: Verdana; font-size: 97%; 
+}
+label {
+	padding-right: 5px;
+}
+ul {
+	text-align: left;
+}
+label.error {
+	float: none; 
+	color: #9E2B1E;
+	padding-left: .5em; 
+	vertical-align: top; 
+}
+p {
+	clear: both;
+	text-align: left;
+}
+.submit {
+	margin-left: 12em;
+}
+em {
+	font-weight: bold; 
+	padding-right: 1em; 
+	vertical-align: top;
+}
+input.error { 
+    border: 1px solid #9E2B1E;
+    box-shadow: 0 0 2px #9E2B1E;
+    padding: 3px 2px;	
+}
+.error {
+	color: #9E2B1E;
+}
+td {
+	padding: 0px 15px 0px 5px;
+}
+fieldset {
+	width:500px; 
+	margin:30px 15px 30px 0px;
+	padding: 20px 0 25px 15px;
+}
+#race {
+	width: 650px;
+}
+.center {
+	text-align: center;
+}
+.left {
+	text-align: left;
+}
