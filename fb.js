@@ -1,9 +1,9 @@
-﻿/* Namespace */
+﻿/* Namespace for avoiding name conflicts*/
 var MiniFireBugConsole = {};
 
-MiniFireBugConsole.runThisStatement = function(id) {
+MiniFireBugConsole.executeScript = function() {
     var outputDiv = document.getElementById("fire-bug-output");
-    var script = document.getElementById(id).value;
+    var script = document.getElementById("input-text-area").value;
     if (script == "") return;
 
     var scriptEval;
@@ -23,15 +23,17 @@ MiniFireBugConsole.runThisStatement = function(id) {
         outputDiv.innerHTML += "<div class='input-command'><span> >>> " + script + "</span></div>";
         outputDiv.innerHTML += "<div class='new-line'>" + scriptEval + "</div>";
     }
-    // for scrolling
+    // for scrolling down to new output
     outputDiv.scrollTop = outputDiv.scrollHeight;
 }
 
+// clear input command area
 MiniFireBugConsole.clearMiniFireBug = function() {
     document.getElementById("input-text-area").value = "";
 }
 
 //http://www.randomsnippets.com/2008/02/12/how-to-hide-and-show-your-div/
+//for show and hide mini fire bug
 MiniFireBugConsole.toggle = function() {
     var ele = document.getElementById("fire-bug-console");
     var text = document.getElementById("toggle-my-firebug");
@@ -54,7 +56,7 @@ MiniFireBugConsole.miniFirebugStartup = function() {
                     "<input type='button' id='toggle-my-firebug' value='mini fire bug' onclick='MiniFireBugConsole.toggle()' />" +
                     "<div id='fire-bug-console'>" +
                         "<textarea id='input-text-area' rows='4'></textarea> <br />" +
-                        "<input type='button' value='Run' onclick=\"MiniFireBugConsole.runThisStatement('input-text-area')\"' />" +
+                        "<input type='button' value='Run' onclick=\"MiniFireBugConsole.executeScript()\"' />" +
                         "<input type='button' value='Clear' onclick='MiniFireBugConsole.clearMiniFireBug()' />" +
                         "<div id='fire-bug-output'>" +
                         "</div>" +
@@ -66,4 +68,21 @@ MiniFireBugConsole.miniFirebugStartup = function() {
     document.getElementById("fire-bug-wrapper").innerHTML = html;
 }
 
-window.onload = function () { MiniFireBugConsole.miniFirebugStartup(); };
+//window.onload = function () { alert("salam ali agha!"); };
+
+// to handle the onload event existence
+MiniFireBugConsole.onLoadHandler = function () {
+    if (!window.onload) {
+        window.onload = function () {
+            MiniFireBugConsole.miniFirebugStartup();
+        };
+    } else {
+        var oldWindowLoadFunction = window.onload;
+        window.onload = function () {
+            oldWindowLoadFunction();
+            MiniFireBugConsole.miniFirebugStartup();
+        };
+    }
+}
+
+MiniFireBugConsole.onLoadHandler();
