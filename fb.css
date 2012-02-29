@@ -3,7 +3,8 @@
     padding: 0 0 0 5px;
     width: 99%;
     position:absolute;
-    bottom:0;    
+    bottom:0;
+    font-size:small;
 }
 #fire-bug-console {
     bottom:0;
@@ -35,7 +36,11 @@
 .input-command {
     border-bottom: 1px dotted Gray;
     color: blue;
-    font-style:italic;
     width: 100%;
 }
 .error { color: Red; }
+.mini-firebug-log {
+    border-bottom: 1px dotted Gray;
+    color:Purple;
+    font-style:italic;
+}

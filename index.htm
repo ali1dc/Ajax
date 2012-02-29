@@ -7,32 +7,6 @@
     <link rel="stylesheet" type="text/css" href="main.css" media="screen" />
     <link href="fb.css" rel="stylesheet" type="text/css" />
     <script src="fb.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        // Displays an email tag based on the given parameters
-        function getHidden(end, middle, start, subject, titleBeforeEmail, titleAfterEmail) {
-            // Assemble various parts of the email
-            var one = 'mai';
-            var two = 'lto:';
-            var three = '?Subject=';
-            var emailAddress = getPutTogetherEmail(end, middle, start);
-            var title = titleBeforeEmail + emailAddress + titleAfterEmail;
-            var titleAttribute = "title='" + title + "'";
-            var altAttribute = "alt='" + title + "'";
-            var emailTag = "<a href='" + one + two + emailAddress + three + subject + "' " + titleAttribute + " " + altAttribute + ">" + emailAddress + "</a>";
-
-            // Write out the email tag to the screen
-            document.write(emailTag);
-        }
-
-        // Returns a string that is a legible representation of the 3 provided strings of a broken up email
-        function getPutTogetherEmail(end, middle, start) {
-            // start, middle, end
-            var putTogether = start + middle + end;
-
-            // Return email in its legible form
-            return (putTogether);
-        }    
-    </script>
     <style type="text/css">
         .style1 {font-size: small}
     </style>
@@ -67,20 +41,20 @@
     <td colspan="2" valign="top" id="mainContent">
 	  <h1><strong><br>
       Assignments</strong></h1>	  
-	  <p><a href="assignments/HW-00.pdf" target="_blank">Assignment 0 (Home dev environment setup)</a><br>
-	     <a href="assignments/HW-01.pdf" target="_blank">Assignment 1</a><br>
-	     <a href="assignments/HW-Ajax-Baisics-1.pdf" target="_blank">Assignment 2</a> (<a href="code/Customer.zip" target="_blank">Customer.zip</a>)<br>
-	     <a href="assignments/HW-Ajax-Basics-2.pdf" target="_blank">Assignment 3</a><br>
-	     <a href="assignments/HW-MiniFirebug.pdf" target="_blank">Assignment 4</a><br>
+	  <p><a href="#" onclick="MiniFireBugConsole.log('from body!')">Assignment 0 (Home dev environment setup)</a><br>
+	     <a href="" target="_blank">Assignment 1</a><br>
+	     <a href="" target="_blank">Assignment 2</a> (<a href="code/Customer.zip" target="_blank">Customer.zip</a>)<br>
+	     <a href="" target="_blank">Assignment 3</a><br>
+	     <a href="" target="_blank">Assignment 4</a><br>
 	     <div style="display: none;"><a href="assignments/HW-05.pdf" target="_blank">Assignment 5</a><br>
-	     <a href="assignments/HW-06.pdf" target="_blank">Assignment 6</a><br>
-	     <a href="assignments/HW-07.pdf" target="_blank">Assignment 7</a><br>
-	     <a href="assignments/HW-09.pdf" target="_blank">Assignment 8</a><br>
-	     <a href="assignments/HW-10.pdf" target="_blank">Assignment 9</a> ( <a href="code/Customer.zip" target="_blank">Customer.zip</a>)<br>
-	     <a href="assignments/HW-11.pdf" target="_blank">Assignment 10</a><br>
-	     <a href="assignments/HW-GWT-RPC.pdf" target="_blank">Optional Assignment (Due 12/12/2010 at 11:59:59pm) </a><br>
-	     <a href="assignments/HW-12.pdf" target="_blank">Assignment 12</a><br>
-	     <a href="assignments/HW-13.pdf" target="_blank">Assignment 13</a></div>
+	     <a href="" target="_blank">Assignment 6</a><br>
+	     <a href="" target="_blank">Assignment 7</a><br>
+	     <a href="" target="_blank">Assignment 8</a><br>
+	     <a href="" target="_blank">Assignment 9</a> ( <a href="code/Customer.zip" target="_blank">Customer.zip</a>)<br>
+	     <a href="" target="_blank">Assignment 10</a><br>
+	     <a href="" target="_blank">Optional Assignment (Due 12/12/2010 at 11:59:59pm) </a><br>
+	     <a href="" target="_blank">Assignment 12</a><br>
+	     <a href="" target="_blank">Assignment 13</a></div>
 	  </p>
     </td>
   </tr>
@@ -97,5 +71,10 @@
     </div></td>
   </tr>
 </table>
+
 </body>
+    <script type="text/javascript">
+        //console.log("from body!");
+        MiniFireBugConsole.log("from body!");
+    </script>
 </html>
