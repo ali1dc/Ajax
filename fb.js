@@ -1,7 +1,7 @@
 ﻿/* Namespace */
 var MiniFireBugConsole = {};
 
-function runThisStatement(id) {
+MiniFireBugConsole.runThisStatement = function(id) {
     var outputDiv = document.getElementById("fire-bug-output");
     var script = document.getElementById(id).value;
     if (script == "") return;
@@ -27,12 +27,12 @@ function runThisStatement(id) {
     outputDiv.scrollTop = outputDiv.scrollHeight;
 }
 
-function clearMiniFireBug() {
+MiniFireBugConsole.clearMiniFireBug = function() {
     document.getElementById("input-text-area").value = "";
 }
 
 //http://www.randomsnippets.com/2008/02/12/how-to-hide-and-show-your-div/
-function toggle() {
+MiniFireBugConsole.toggle = function() {
     var ele = document.getElementById("fire-bug-console");
     var text = document.getElementById("toggle-my-firebug");
     if (ele.style.display == "block") {
@@ -49,13 +49,13 @@ function toggle() {
 }
 
 // dynamically add mini firebug to the page
-function miniFirebugStartup() {
+MiniFireBugConsole.miniFirebugStartup = function() {
     var html = "<div id='fire-bug'>" +
-                    "<input type='button' id='toggle-my-firebug' value='mini fire bug' onclick='toggle()' />" +
+                    "<input type='button' id='toggle-my-firebug' value='mini fire bug' onclick='MiniFireBugConsole.toggle()' />" +
                     "<div id='fire-bug-console'>" +
                         "<textarea id='input-text-area' rows='4'></textarea> <br />" +
-                        "<input type='button' value='Run' onclick=\"runThisStatement('input-text-area')\"' />" + 
-                        "<input type='button' value='Clear' onclick='clearMiniFireBug()' />" +
+                        "<input type='button' value='Run' onclick=\"MiniFireBugConsole.runThisStatement('input-text-area')\"' />" +
+                        "<input type='button' value='Clear' onclick='MiniFireBugConsole.clearMiniFireBug()' />" +
                         "<div id='fire-bug-output'>" +
                         "</div>" +
                     "</div>" +
@@ -66,4 +66,4 @@ function miniFirebugStartup() {
     document.getElementById("fire-bug-wrapper").innerHTML = html;
 }
 
-window.onload = function () { miniFirebugStartup(); };
+window.onload = function () { MiniFireBugConsole.miniFirebugStartup(); };
